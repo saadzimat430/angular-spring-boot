@@ -1,0 +1,63 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid" style="display: flex; alignItems:center; justifyContent:center; margin-top: 100px;">
+            
+            <div class="w3-container w3-pale-blue w3-leftbar w3-border-blue">
+                <h1 style="text-align: center;">Login Page</h1>
+                <br>
+                <form *ngIf="!isLoggedIn" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user" style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText placeholder="Username" [(ngModel)]="form.username" required
+                            #username="ngModel" name="username" style="width: 300px;">         
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && username.invalid">
+                            Username is required!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-lock" style="line-height: 1.25;"></i></span>
+                            <input type="password" pInputText placeholder="Password" [(ngModel)]="form.password" required
+                            #password="ngModel" name="password" style="width: 300px;">         
+                        </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && password.invalid">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex; alignItems:center; justifyContent:center;">
+                        <p-button label="Login"></p-button>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
+                            Login failed: {{ errorMessage }}
+                        </div>
+                    </div>
+                </form>
+
+                <div class="alert alert-success" *ngIf="isLoggedIn">
+                    Logged in as {{ roles }}.
+                    <br><br>
+                    <p-button label="Redirect to Products list" onclick="window.location.href='http://localhost:4200/products';"></p-button>
+                </div>
+
+            </div>
+
+            <!-- footer -->
+            <div class="footer-pagination">
+                <div class="row">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

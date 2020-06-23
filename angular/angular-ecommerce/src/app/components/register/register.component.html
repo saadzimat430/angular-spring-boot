@@ -1,0 +1,83 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid"
+            style="display: flex; alignItems:center; justifyContent:center; margin-top: 100px;">
+            <div class="w3-container w3-pale-blue w3-leftbar w3-border-blue">
+                <h1 style="text-align: center;">Register Page</h1>
+                <br>
+
+                <form *ngIf="!isSuccessful" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-user"
+                                    style="line-height: 1.25;"></i></span>
+                            <input type="text" pInputText name="username" [(ngModel)]="form.username" required
+                                minlength="3" maxlength="20" #username="ngModel" style="width: 300px;" />
+                        </div>
+                        <div class="alert-danger" *ngIf="f.submitted && username.invalid">
+                            <div *ngIf="username.errors.required">Username is required</div>
+                            <div *ngIf="username.errors.minlength">
+                                Username must be at least 3 characters
+                            </div>
+                            <div *ngIf="username.errors.maxlength">
+                                Username must be at most 20 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-envelope"
+                                    style="line-height: 1.25;"></i></span>
+                            <input type="email" pInputText name="email" [(ngModel)]="form.email" required email
+                                #email="ngModel" style="width: 300px;" />
+                        </div>
+                        <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                            <div *ngIf="email.errors.required">Email is required</div>
+                            <div *ngIf="email.errors.email">
+                                Email must be a valid email address
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="ui-inputgroup">
+                            <span class="ui-inputgroup-addon"><i class="pi pi-lock"
+                                    style="line-height: 1.25;"></i></span>
+                            <input type="password" pInputText name="password" [(ngModel)]="form.password" required
+                                minlength="6" #password="ngModel" style="width: 300px;" />
+                        </div>
+                        <div class="alert-danger" *ngIf="f.submitted && password.invalid">
+                            <div *ngIf="password.errors.required">Password is required</div>
+                            <div *ngIf="password.errors.minlength">
+                                Password must be at least 6 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="display: flex; alignItems:center; justifyContent:center;">
+                        <p-button label="Sign Up"></p-button>
+                    </div>
+
+                    <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                        Signup failed!<br />{{ errorMessage }}
+                    </div>
+                </form>
+
+                <div class="alert alert-success" *ngIf="isSuccessful">
+                    Your registration is successful!
+                </div>
+
+            </div>
+
+            <!-- footer -->
+            <div class="footer-pagination">
+                <div class="row">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

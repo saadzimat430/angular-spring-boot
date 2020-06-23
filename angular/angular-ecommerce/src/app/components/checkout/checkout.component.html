@@ -1,0 +1,104 @@
+<div class="main-content page-m">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid">
+
+            <!-- checkoutFormGroup from checkout.component.ts -->
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+
+                <!-- customer form group-->
+                <div formGroupName="customer" class="form-area">
+                    <h3>Customer Info</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>First Name</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="firstName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Last Name</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="lastName" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Email</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="email" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div formGroupName="shippingAddress" class="form-area">
+                    <h3>Shipping Address</h3>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>City</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <select formControlName="city">
+                                    <option>Casablanca</option>
+                                    <option>Rabat</option>
+                                    <option>Marrakech</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>Street</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="street" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-2"> <label>ZIP Code</label> </div>
+                        <div class="col-md-9">
+                            <div class="input-space">
+                                <!-- firstName from the component .ts -->
+                                <input formControlName="zipCode" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <!-- order details: review your order -->
+                <div class="form-area">
+                    <h3>Review Your Order</h3>
+
+                    <p>Total Quantity: <span style="font-weight: bold;">{{ totalQuantity }}</span></p>
+                    <p>Shipping: <span style="font-weight: bold;">FREE</span></p>
+                    <p>
+                        Total Price: <span style="font-weight: bold;">{{ totalPrice | currency:'MAD' }}</span>
+                    </p>
+                </div>
+
+                <!-- submit button -->
+                <div class="text-center">
+                    <button type="submit" class="btn btn-info">Purchase</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</div>

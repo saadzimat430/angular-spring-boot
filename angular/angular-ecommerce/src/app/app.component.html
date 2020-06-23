@@ -1,0 +1,68 @@
+<div class="page-wrapper">
+
+  <!-- MENU SIDEBAR-->
+  <aside class="menu-sidebar d-none d-lg-block">
+    <div class="logo">
+      <a routerLink="/products">
+        <img src="assets/images/logo.png" alt="ecommerce" class="img-responsive">
+      </a>
+    </div>
+
+    <div *ngIf="isLoggedIn">
+      <app-product-category-menu></app-product-category-menu>
+    </div>
+
+  </aside>
+
+  <div class="page-container">
+    <!-- HEADER DESKTOP-->
+    <header class="header-desktop">
+      <div class="section-content section-content-p30">
+        <div class="container-fluid">
+          <div class="header-wrap">
+            <app-search></app-search>
+
+            <div *ngIf="isLoggedIn">
+              <app-cart-status></app-cart-status>
+            </div>
+        
+            <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+              <div class="wrapper">
+                <div class="nav-item" style="float:left;">
+                  <p-button label="Sign up" href="/register" routerLink="register"></p-button>
+                </div>
+                <div class="nav-item" style="float:right; margin-left: 10px;">
+                  <p-button label="Login" href="/login" routerLink="login"></p-button>
+                </div>
+              </div>
+              
+            </ul>
+
+            <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn" style="display:inline;">
+              <li class="nav-item" style="display:inline; margin-right: 20px;" *ngIf="isAdmin">
+                <a routerLink="/new-product"><i class="pi pi-plus-circle" style="width: 24px; height: 24px;"></i></a>
+              </li>
+              
+              <li class="nav-item" style="display:inline;">
+                <p-button label="Log out" (click)="logout()"></p-button>
+              </li>
+            </ul>
+
+          </div>
+          <div class="account-wrap"></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT-->
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer>
+  <ul>
+    <li><a href="#">About Us</a></li>
+    <li><a href="#">Contact Us</a></li>
+    <li><a href="#">Help</a></li>
+  </ul>
+</footer>

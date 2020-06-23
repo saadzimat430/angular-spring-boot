@@ -1,0 +1,45 @@
+<div class="main-content">
+    <div class="section-content section-content-p30">
+        <div class="container-fluid"
+            style="display: flex; alignItems:center; justifyContent:center; margin-top: 100px;">
+            <div class="w3-container w3-pale-blue w3-leftbar w3-border-blue">
+                <h3>Add new product</h3>
+                <br>
+                <div [hidden]="submitted" style="width: 400px;">
+                    <form (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" required [(ngModel)]="product.name"
+                                name="name">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Description</label>
+                            <input type="text" class="form-control" id="description" required
+                                [(ngModel)]="product.description" name="description">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Unit price</label>
+                            <input type="text" class="form-control" id="unitPrice" required
+                                [(ngModel)]="product.unitPrice" name="unitPrice">
+                        </div>
+
+
+                        <div class="form-group" style="display: flex; alignItems:center; justifyContent:center;">
+                            <p-button type="submit" label="Submit"></p-button>
+                        </div>
+                        
+                    </form>
+
+                    
+                </div>
+                <app-upload-files></app-upload-files>
+                <div [hidden]="!submitted">
+                    <h4>New product added successfully!</h4>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </div>
